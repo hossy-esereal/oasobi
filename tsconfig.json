@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "jsx": "react",
+    "declaration": false,
+    "sourceMap": true,
+    "rootDir": "./",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["**/node_modules/**"]
+}
