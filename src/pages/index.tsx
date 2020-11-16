@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -21,10 +21,24 @@ const IndexPage: React.FC = () => (
         <Link to="/page-2/">Go to page 2</Link>
       </li>
       <li>
-        <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
+        <Link to="/diary/">Go to blog posts (Source: Contentful)</Link>
       </li>
     </ul>
   </Layout>
 );
+
+export const query = graphql`
+  query AllContentfulDiary {
+    allContentfulDiary {
+      nodes {
+        id
+        title
+        description {
+          json
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;
