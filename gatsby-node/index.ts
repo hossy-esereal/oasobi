@@ -43,7 +43,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     reporter.panic(result.errors);
   }
 
-  const diaryTemplate = path.resolve('../hossy-blog/src/templates/diary.tsx');
+  const diaryTemplate = path.resolve('src/templates/diary.tsx');
 
   result.data?.allContentfulDiary.nodes?.map(diary => {
     // console.log(diary.description?.json.content[0].content[0].value);
