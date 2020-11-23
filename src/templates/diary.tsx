@@ -4,7 +4,7 @@ import * as React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { DiaryPageContext } from '../../gatsby-node/index';
-// import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 type Props = {
   pageContext: DiaryPageContext;
@@ -18,7 +18,10 @@ const Diary: React.FC<Props> = ({ pageContext }) => {
   return (
     <Layout>
       <SEO title="Diary" />
-      <div>{diary.title}</div>
+      <div>タイトル：{diary.title}</div>
+      <>
+        {diary.description && documentToReactComponents(diary.description.json)}
+      </>
     </Layout>
   );
 };

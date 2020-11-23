@@ -7,7 +7,7 @@ import {
 } from '../types/graphql-types';
 
 export type DiaryPageContext = {
-  diary: Pick<ContentfulDiary, 'id' | 'title'> & {
+  diary: Pick<ContentfulDiary, 'title' | 'createdAt'> & {
     description?:
       | Pick<ContentfulDiaryDescriptionRichTextNode, 'json'>
       | null
@@ -19,8 +19,8 @@ const query = `
   {
     allContentfulDiary {
       nodes {
-        id
         title
+        createdAt
         description {
           json
         }
@@ -46,9 +46,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const diaryTemplate = path.resolve('src/templates/diary.tsx');
 
   result.data?.allContentfulDiary.nodes?.map(diary => {
-    // console.log(diary.description?.json.content[0].content[0].value);
     createPage<DiaryPageContext>({
-      path: `/diary/${diary.id}`,
+      path: `/diary/${diary.createdAt}`,
       component: diaryTemplate,
       context: {
         diary,

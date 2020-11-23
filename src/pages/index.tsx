@@ -31,8 +31,8 @@ export const query = graphql`
   query AllContentfulDiary {
     allContentfulDiary {
       nodes {
-        id
         title
+        createdAt
         description {
           json
         }
