@@ -6,6 +6,8 @@ import {
   ContentfulDiaryDescriptionRichTextNode,
 } from '../types/graphql-types';
 
+import { formatDate } from '../src/util/dateUtil';
+
 export type DiaryPageContext = {
   diary: Pick<ContentfulDiary, 'title' | 'createdAt'> & {
     description?:
@@ -47,7 +49,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   result.data?.allContentfulDiary.nodes?.map(diary => {
     createPage<DiaryPageContext>({
-      path: `/diary/${diary.createdAt}`,
+      path: `/diary/${formatDate(diary.createdAt, 'YYYY-MM-DD')}`,
       component: diaryTemplate,
       context: {
         diary,
