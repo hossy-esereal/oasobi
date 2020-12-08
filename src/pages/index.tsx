@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import { Layout } from '../components/Layout';
+import { BaseLayout } from '../layout/BaseLayout';
 import { SEO } from '../components/Seo';
 
 const IndexPage: React.FC = () => (
-  <Layout>
+  <BaseLayout>
     <SEO title="Home" />
     <h1>Hi おね</h1>
     <p>Welcome to your new Gatsby site.</p>
@@ -24,7 +24,7 @@ const IndexPage: React.FC = () => (
         <Link to="/diary/">Go to blog posts (Source: Contentful)</Link>
       </li>
     </ul>
-  </Layout>
+  </BaseLayout>
 );
 
 export const query = graphql`

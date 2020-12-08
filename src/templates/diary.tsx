@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import * as React from 'react';
 
-import { Layout } from '../components/Layout';
+import { BaseLayout } from '../layout/BaseLayout';
 import { SEO } from '../components/Seo';
 import { DiaryPageContext } from '../../gatsby-node/index';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -16,11 +16,11 @@ const Diary: React.FC<Props> = ({ pageContext }) => {
   if (!diary) return null;
 
   return (
-    <Layout>
+    <BaseLayout>
       <SEO title="Diary" />
       <div>タイトル：{diary.title}</div>
       {diary.description && documentToReactComponents(diary.description.json)}
-    </Layout>
+    </BaseLayout>
   );
 };
 
