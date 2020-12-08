@@ -34,8 +34,4 @@ const Header: React.FC<Props> = ({ siteTitle }) => (
   </header>
 );
 
-Header.defaultProps = {
-  siteTitle: ``,
-};
-
 export default Header;

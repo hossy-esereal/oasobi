@@ -1,22 +1,17 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import Header from './header';
-import './layout.css';
+import Header from './Header';
+import { GlobalStyle } from '../styles/globalStyle';
+import { Footer } from './Footer';
+import 'fontsource-castoro';
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Layout: React.FC<Props> = ({ children }: Props) => {
+export const Layout: React.FC<Props> = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -29,27 +24,19 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
 
   return (
     <>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+      <StyledWrapper>
         <main>{children}</main>
-        <footer>
-          ©{new Date().getFullYear()}, Built with
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+        <Footer />
+      </StyledWrapper>
     </>
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Layout;
+const StyledWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1.0875rem 1.45rem;
+  padding-top: 0;
+`;
