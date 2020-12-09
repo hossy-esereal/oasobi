@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import { BaseLayout } from '../layout/BaseLayout';
-import { SEO } from '../components/Seo';
+import { BaseLayout } from 'layouts/BaseLayout';
+import { SEO } from 'components/Seo';
 
 const IndexPage: React.FC = () => (
   <BaseLayout>
     <SEO title="Home" />
-    <h1>Hi おね</h1>
+    <h1>Hello This is Gatsby Site</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <div

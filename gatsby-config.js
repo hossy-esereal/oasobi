@@ -1,5 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
+/* eslint-disable @typescript-eslint/no-var-requires */
+const dotenv = require('dotenv');
+const path = require('path');
+
+dotenv.config();
 
 module.exports = {
   siteMetadata: {
@@ -21,8 +24,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `hossy-portal`,
+        short_name: `hossy-portal`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -59,6 +62,18 @@ module.exports = {
           emitWarning: true,
           failOnError: true,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        components: path.join(__dirname, 'src/components'),
+        styles: path.join(__dirname, 'src/styles'),
+        fonts: path.join(__dirname, 'src/styles/fonts'),
+        utils: path.join(__dirname, 'src/utils'),
+        hooks: path.join(__dirname, 'src/hooks'),
+        layouts: path.join(__dirname, 'src/layouts'),
       },
     },
   ],

@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import * as React from 'react';
 
-import { BaseLayout } from '../layout/BaseLayout';
-import { SEO } from '../components/Seo';
-import { DiaryPageContext } from '../../gatsby-node/index';
+import { BaseLayout } from 'layouts/BaseLayout';
+import { SEO } from 'components/Seo';
+import { DiaryPageContext } from '../../gatsby-node';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 type Props = {

@@ -42,6 +42,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-styled-components": "^3.3.14",
     "prettier": "^2.1.2",
     "styled-components": "4.3.2",
@@ -63,6 +64,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn dev",
     "serve": "gatsby serve",
+    "copy:font": "\\cp -rf src/styles/fonts/ public/fonts",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },

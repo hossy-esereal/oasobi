@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { AllContentfulDiaryIndexQuery } from '../../../types/graphql-types';
+import { BaseLayout } from 'layouts/BaseLayout';
 
 interface Props {
   data: AllContentfulDiaryIndexQuery;
@@ -8,7 +9,7 @@ interface Props {
 
 const DiaryIndex: React.FC<Props> = ({ data }) => {
   return (
-    <>
+    <BaseLayout>
       {data.allContentfulDiary.nodes.map(dairy => {
         return (
           <>
@@ -17,7 +18,7 @@ const DiaryIndex: React.FC<Props> = ({ data }) => {
           </>
         );
       })}
-    </>
+    </BaseLayout>
   );
 };
 

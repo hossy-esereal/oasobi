@@ -6,7 +6,7 @@ import {
   ContentfulDiaryDescriptionRichTextNode,
 } from '../types/graphql-types';
 
-import { formatDate } from '../src/util/dateUtil';
+import { formatDate } from '../src/utils/dateUtil';
 
 export type DiaryPageContext = {
   diary: Pick<ContentfulDiary, 'title' | 'createdAt'> & {

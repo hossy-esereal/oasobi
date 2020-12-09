@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import { GlobalStyle } from '../styles/globalStyle';
 import { Footer } from '../components/Footer';
-import 'fontsource-castoro';
 
 type Props = {
   children: React.ReactNode;

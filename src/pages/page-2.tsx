@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { BaseLayout } from '../layout/BaseLayout';
-import { SEO } from '../components/Seo';
+import { BaseLayout } from 'layouts/BaseLayout';
+import { SEO } from 'components/Seo';
 
 const SecondPage: React.FC = () => (
   <BaseLayout>
