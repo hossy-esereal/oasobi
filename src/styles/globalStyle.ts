@@ -1,8 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import { Normalize } from './normalize';
+import { typography } from './typography';
+// import 'fontsource-castoro';
 
 export const GlobalStyle = createGlobalStyle`
   ${Normalize}
+  ${typography}
   html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -15,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: hsla(0, 0%, 0%, 0.8);
-    font-family: 'Castoro', georgia, serif;
+    font-family: 'azuki', georgia, serif;
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;
