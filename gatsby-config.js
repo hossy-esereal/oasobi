@@ -6,7 +6,7 @@ dotenv.config();
 
 module.exports = {
   siteMetadata: {
-    title: `My Gatsby Blog`,
+    title: `Hossy Gatsby Blog`,
     description: `My Site`,
     author: `y.hoshi`,
   },
