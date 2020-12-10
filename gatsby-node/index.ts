@@ -1,17 +1,22 @@
 import path from 'path';
 import { GatsbyNode } from 'gatsby';
 import {
-  AllContentfulDiaryQuery,
-  ContentfulDiary,
-  ContentfulDiaryDescriptionRichTextNode,
+  AllContentfulMdQuery,
+  ContentfulMd,
+  MarkdownRemark,
 } from '../types/graphql-types';
 
 import { formatDate } from '../src/utils/dateUtil';
 
 export type DiaryPageContext = {
-  diary: Pick<ContentfulDiary, 'title' | 'createdAt'> & {
+  diary: Pick<ContentfulMd, 'title' | 'createdAt'> & {
     description?:
-      | Pick<ContentfulDiaryDescriptionRichTextNode, 'json'>
+      | {
+          childMarkdownRemark?:
+            | Pick<MarkdownRemark, 'rawMarkdownBody'>
+            | null
+            | undefined;
+        }
       | null
       | undefined;
   };
@@ -19,12 +24,16 @@ export type DiaryPageContext = {
 
 const query = `
   {
-    allContentfulDiary {
-      nodes {
-        title
-        createdAt
-        description {
-          json
+    allContentfulMd {
+      edges {
+        node {
+          title
+          createdAt
+          description {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
         }
       }
     }
@@ -38,7 +47,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 }) => {
   const { createPage } = actions;
 
-  const result = await graphql<AllContentfulDiaryQuery>(query);
+  const result = await graphql<AllContentfulMdQuery>(query);
 
   if (result.errors) {
     console.log('result is error occur');
@@ -47,12 +56,12 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   const diaryTemplate = path.resolve('src/templates/diary.tsx');
 
-  result.data?.allContentfulDiary.nodes?.map(diary => {
+  result.data?.allContentfulMd.edges.map(edge => {
     createPage<DiaryPageContext>({
-      path: `/diary/${formatDate(diary.createdAt, 'YYYY-MM-DD')}`,
+      path: `/diary/${formatDate(edge.node.createdAt, 'YYYYMMDD')}`,
       component: diaryTemplate,
       context: {
-        diary,
+        diary: edge.node,
       },
     });
   });

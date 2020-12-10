@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { AllContentfulDiaryIndexQuery } from '../../../types/graphql-types';
 import { BaseLayout } from 'layouts/BaseLayout';
+import { AllContentfulMdIndexQuery } from '../../../types/graphql-types';
 
 interface Props {
-  data: AllContentfulDiaryIndexQuery;
+  data: AllContentfulMdIndexQuery;
 }
 
 const DiaryIndex: React.FC<Props> = ({ data }) => {
   return (
     <BaseLayout>
-      {data.allContentfulDiary.nodes.map(dairy => {
+      {data.allContentfulMd.edges.map(edge => {
         return (
           <>
-            <div>{dairy.title}</div>
-            <div>{dairy.createdAt}</div>
+            <div>{edge.node.title}</div>
+            <div>{edge.node.createdAt}</div>
           </>
         );
       })}
@@ -23,11 +23,13 @@ const DiaryIndex: React.FC<Props> = ({ data }) => {
 };
 
 export const query = graphql`
-  query AllContentfulDiaryIndex {
-    allContentfulDiary {
-      nodes {
-        title
-        createdAt
+  query AllContentfulMdIndex {
+    allContentfulMd {
+      edges {
+        node {
+          title
+          createdAt
+        }
       }
     }
   }

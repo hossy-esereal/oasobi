@@ -28,13 +28,17 @@ const IndexPage: React.FC = () => (
 );
 
 export const query = graphql`
-  query AllContentfulDiary {
-    allContentfulDiary {
-      nodes {
-        title
-        createdAt
-        description {
-          json
+  query AllContentfulMd {
+    allContentfulMd {
+      edges {
+        node {
+          title
+          createdAt
+          description {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
         }
       }
     }
